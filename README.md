@@ -20,8 +20,8 @@ The RE and DE are connected together with the pin PA8, which we have set as the 
 
 ### The CubeMX configuration is shown below ###
 
-<img src="https://github.com/ozgedurgut/STM32_max485/blob/main/s-l500KK.jpg"   >
-<img src="https://github.com/ozgedurgut/STM32_max485/blob/main/s-l500KK.jpg"   >
+<img src="https://github.com/ozgedurgut/STM32_max485/blob/main/rs485_7-768x405.jpeg"   >
+<img src="https://github.com/ozgedurgut/STM32_max485/blob/main/rs485_8.jpeg"   >
 
 
 
