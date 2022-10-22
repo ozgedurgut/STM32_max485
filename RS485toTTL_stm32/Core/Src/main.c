@@ -65,23 +65,22 @@ int indx = 0;
 void sendData (uint8_t *data)
 {
 	// Pull DE high to enable TX operation
+	//Before transmitting the data we need to put the RS485 module in the transmitter mode.
+	//To do this we have to pull the DE (Driver enable) pin as HIGH.
 	HAL_GPIO_WritePin(TX_EN_GPIO_Port, TX_EN_Pin, GPIO_PIN_SET);
-	HAL_UART_Transmit(&huart1, data, strlen(data) , 1000);
+	HAL_UART_Transmit(&huart1,data, strlen(data),1000);
+	//Then we will send the data using the HAL_UART_Transmit Function.
 	// Pull RE Low to enable RX operation
-	HAL_GPIO_WritePin(TX_EN_GPIO_Port, TX_EN_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(TX_EN_GPIO_Port, TX_EN_Pin, GPIO_PIN_RESET); // 	//Once the data is transmitted, we will enable the receiver mode by pulling the RE (Receive Enable) Pin LOW.
+//Remember that DE and RE are connected to the same pin (PA8, TX_EN), so we can use the same pin to set the module in transmitter or receiver mode.
 }
 
-/*
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 {
-	RxData[0] = 'F';
-	RxData[1] = '4';
-	RxData[2] = '4';
-	RxData[3] = '6';
-	sendData(RxData);
-	HAL_UARTEx_ReceiveToIdle_IT(&huart1, RxData, 64);
+	HAL_UARTEx_ReceiveToIdle_IT(&huart1, RxData, 16);
+	// The function ReceiveToIdle_IT will receive the incoming data and store in the RxData buffer, until the Idle line is detected.
 //	memset (RxData, '\0',64);
-} */
+}
 
 /* USER CODE END 0 */
 
