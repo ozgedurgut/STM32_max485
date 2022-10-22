@@ -56,10 +56,8 @@ static void MX_USART1_UART_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-uint8_t TxData[16];
-uint8_t RxData[16];
-int indx = 0;
-
+uint8_t TxData[64];
+uint8_t RxData[64];
 
 void sendData (uint8_t *data)
 {
